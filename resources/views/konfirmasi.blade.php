@@ -8,37 +8,21 @@
 
     <div class="confirmation-card">
 
-        <x-alert title="Laporan Berhasil Dikirim">
-            Terima kasih. Laporan banjir Anda berhasil diproses.
-        </x-alert>
+     <x-alert title="Laporan Berhasil Disimpan">
+    Laporan banjir Anda berhasil disimpan ke database.
+</x-alert>
 
-
-        <h2>Data Laporan</h2>
-
-
-        <div class="report-data">
-
-            <p>
-                <strong>Nama Pelapor:</strong>
-                {{ $data['nama'] }}
-            </p>
-
-            <p>
-                <strong>Lokasi Kejadian:</strong>
-                {{ $data['lokasi'] }}
-            </p>
-
-            <p>
-                <strong>Tinggi Genangan:</strong>
-                {{ $data['tinggi_air'] }} cm
-            </p>
+<p><strong>Nama Pelapor:</strong> {{ $data->nama_pelapor }}</p>
+<p><strong>Lokasi:</strong> {{ $data->lokasi }}</p>
+<p><strong>Tinggi Genangan:</strong> {{ $data->tinggi_genangan }} cm</p>
+<p><strong>Tanggal Kejadian:</strong> {{ $data->tanggal_kejadian }}</p>
 
         </div>
 
 
         <p class="note">
-            Data laporan hanya diproses sementara
-            dan tidak disimpan ke database.
+            Data laporan hanya diproses
+            dan disimpan ke database.
         </p>
 
 

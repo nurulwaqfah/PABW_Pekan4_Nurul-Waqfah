@@ -38,71 +38,58 @@
         @endif
 
 
-        <form
-            action="{{ route('laporan.kirim') }}"
-            method="POST"
+        <form action="{{ route('laporan.kirim') }}" method="POST">
+    @csrf
+
+    <div class="form-group">
+        <label for="nama_pelapor">Nama Pelapor</label>
+        <input
+            type="text"
+            id="nama_pelapor"
+            name="nama_pelapor"
+            value="{{ old('nama_pelapor') }}"
+            required
         >
+    </div>
 
-            @csrf
+    <div class="form-group">
+        <label for="lokasi">Lokasi Kejadian</label>
+        <input
+            type="text"
+            id="lokasi"
+            name="lokasi"
+            value="{{ old('lokasi') }}"
+            required
+        >
+    </div>
 
+    <div class="form-group">
+        <label for="tinggi_genangan">Tinggi Genangan (cm)</label>
+        <input
+            type="number"
+            id="tinggi_genangan"
+            name="tinggi_genangan"
+            min="0"
+            value="{{ old('tinggi_genangan') }}"
+            required
+        >
+    </div>
 
-            <div class="form-group">
+    <div class="form-group">
+        <label for="tanggal_kejadian">Tanggal Kejadian</label>
+        <input
+            type="date"
+            id="tanggal_kejadian"
+            name="tanggal_kejadian"
+            value="{{ old('tanggal_kejadian') }}"
+            required
+        >
+    </div>
 
-                <label for="nama">
-                    Nama Pelapor
-                </label>
-
-                <input
-                    type="text"
-                    id="nama"
-                    name="nama"
-                    value="{{ old('nama') }}"
-                    placeholder="Masukkan nama pelapor"
-                >
-
-            </div>
-
-
-            <div class="form-group">
-
-                <label for="lokasi">
-                    Lokasi Kejadian
-                </label>
-
-                <input
-                    type="text"
-                    id="lokasi"
-                    name="lokasi"
-                    value="{{ old('lokasi') }}"
-                    placeholder="Contoh: Kecamatan Baleendah"
-                >
-
-            </div>
-
-
-            <div class="form-group">
-
-                <label for="tinggi_air">
-                    Tinggi Genangan Air (cm)
-                </label>
-
-                <input
-                    type="number"
-                    id="tinggi_air"
-                    name="tinggi_air"
-                    value="{{ old('tinggi_air') }}"
-                    placeholder="Contoh: 50"
-                    min="0"
-                >
-
-            </div>
-
-
-            <button type="submit" class="button">
-                Kirim Laporan
-            </button>
-
-        </form>
+    <button type="submit" class="button">
+        Kirim Laporan
+    </button>
+</form>
 
     </div>
 

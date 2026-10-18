@@ -2,29 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Laporan;
 use Illuminate\Http\Request;
 
 class LaporBanjirController extends Controller
 {
     public function laporan()
     {
-        $laporan = [
-            [
-                'nama' => 'Andi',
-                'lokasi' => 'Kecamatan Baleendah',
-                'tinggi_air' => 20
-            ],
-            [
-                'nama' => 'Siti',
-                'lokasi' => 'Kecamatan Dayeuhkolot',
-                'tinggi_air' => 50
-            ],
-            [
-                'nama' => 'Budi',
-                'lokasi' => 'Kecamatan Bojongsoang',
-                'tinggi_air' => 85
-            ],
-        ];
+        $laporan = Laporan::all();
 
         return view('laporan', compact('laporan'));
     }
@@ -36,17 +21,14 @@ class LaporBanjirController extends Controller
 
     public function kirim(Request $request)
     {
-        $request->validate([
-            'nama' => 'required',
-            'lokasi' => 'required',
-            'tinggi_air' => 'required|numeric|min:0',
+        $validated = $request->validate([
+            'nama_pelapor' => 'required|string|max:255',
+            'lokasi' => 'required|string|max:255',
+            'tinggi_genangan' => 'required|integer|min:0',
+            'tanggal_kejadian' => 'required|date',
         ]);
 
-        $data = [
-            'nama' => $request->nama,
-            'lokasi' => $request->lokasi,
-            'tinggi_air' => $request->tinggi_air,
-        ];
+        $data = Laporan::create($validated);
 
         return view('konfirmasi', compact('data'));
     }
