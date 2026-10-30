@@ -9,7 +9,7 @@
         @yield('title', 'LaporBanjir')
     </title>
 
-    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+<link rel="stylesheet" href="{{ asset('css/style.css') }}?v=2">
 </head>
 
 <body>
@@ -22,22 +22,29 @@
                 LaporBanjir
             </a>
 
-            <nav>
+           
+<nav>
+    <a href="{{ route('laporan.form') }}">Lapor Banjir</a>
 
-                <a href="{{ route('laporan.index') }}">
-                    Daftar Laporan
-                </a>
+    @guest
+        <a href="{{ route('login') }}">Login</a>
+        <a href="{{ route('register') }}">Register</a>
+    @endguest
 
-                <a href="{{ route('laporan.form') }}">
-                    Lapor Banjir
-                </a>
+    @auth
+        <a href="{{ route('laporan.index') }}">Daftar Laporan</a>
+        <a href="{{ route('profil') }}">Profil Petugas</a>
 
-            </nav>
-
+        <form action="{{ route('logout') }}" method="POST">
+            @csrf
+            <button type="submit">Logout</button>
+        </form>
+    @endauth
+</nav>
         </div>
 
     </header>
-
+    
 
     <main>
 

@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
+use Database\Seeders\PetugasSeeder;
 
 class DatabaseSeeder extends Seeder
 {
@@ -11,5 +12,8 @@ class DatabaseSeeder extends Seeder
         $this->call([
             LaporanSeeder::class,
         ]);
+        $this->call([
+        PetugasSeeder::class,
+    ]);
     }
 }
